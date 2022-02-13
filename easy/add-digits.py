@@ -20,3 +20,22 @@ class Solution(object):
                 s += int(n)
             num = s
         return num
+
+'''
+second time
+'''
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        sol = 0
+        while num>=10:
+            while num>0:
+                sol += num%10
+                num //= 10
+            num = sol
+            sol = 0
+        
+        return num

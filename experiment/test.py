@@ -1,6 +1,4 @@
-from functools import reduce
-# "catsandog"
+from itertools import permutations
 
-wordDict = ["cats","dog","sand","and","cat"]
-minWordDictLength = min(map(len, wordDict))
-print(minWordDictLength)
+a = 0b100
+print(a<<1+1)

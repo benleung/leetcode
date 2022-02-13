@@ -1,4 +1,4 @@
-# 2' (too easy, nothing to study)
+# 2' 
 
 class Solution(object):
     def hammingWeight(self, n):

@@ -21,7 +21,7 @@ class Solution:
         output = [[]]
         
         for num in nums:
-            output += [curr + [num] for curr in output]
+            output += [curr + [num] for curr in output]  # writing in one line is a smart way to avoid problem
         
         return output
 
@@ -49,3 +49,15 @@ class Solution:
         for k in range(n + 1):
             backtrack()
         return output
+
+
+
+# revised on 2/13, used cascading in 5 min
+from itertools import combinations
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        sol = [[]]
+        for num in nums:
+            for s in sol.copy():
+                sol.append(s + [num])
+        return sol

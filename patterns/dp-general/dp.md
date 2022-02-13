@@ -40,3 +40,8 @@ class Solution:
 
 
 # optimized dp space complexity
+
+
+# common quiz questions
+- maximum or minimum of somthing is very common
+- Divide and conquer approaches can be parallelized while dynamic programming approaches cannot.

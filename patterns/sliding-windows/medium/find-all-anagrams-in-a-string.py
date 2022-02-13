@@ -5,7 +5,7 @@ complexity too slow
 
 learn:
 - this is a typical question of sliding window
-- it is possible to compare Counter directly
+- it is possible to compare Counter directly ( and the time complexity is just O(1))
 - default value of Counter is 0 for each parameter, such that you can use s[x] += n directly
 
 focus of sliding window

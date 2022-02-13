@@ -1,4 +1,21 @@
 '''
+6 min after knowing the answer
+
+imagine each coin is gain seperately one by one, modify dp in a way the best performance is gained at that set of coin
+'''
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        d = [float('inf')] * (amount+1)
+        d[0] = 0
+        for coin in coins:
+            for i in range(coin, amount +1):
+                d[i] = min(d[i], d[i-coin] + 1)
+        
+        return d[amount] if d[amount] != float('inf') else -1
+
+
+
+'''
 1 hr
 
 '''
@@ -81,4 +98,30 @@ public class Solution {
 
 '''
 
-# dp (bottom up)
+'''
+dp (bottom up)
+
+
+idea of dp to represent up to amount, and d[x-y] is a smart move
+
+but too slow
+- not an effective solution because "newD = d[coin] + d[i-coin]" not effective, by coins.append(i)
+- a more effective one is  to run a for loop on coins instead so that  "newD =  d[i-coin] +1"
+
+'''
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        d = {}
+        coins.sort()  # all choices
+        if amount ==0:
+            return 0
+        for coin in coins:
+            d[coin] = 1
+        for i in range(1, amount+1):
+            for coin in coins:
+                if i > coin and i-coin in d:
+                    newD = d[coin] + d[i-coin]
+                    d[i] = min(d[i], newD) if i in d else newD
+                    if coins[-1] != i:
+                        coins.append(i)
+        return d.get(amount, -1)

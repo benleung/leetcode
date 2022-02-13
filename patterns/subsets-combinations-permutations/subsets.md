@@ -8,3 +8,7 @@
 For a given number, it could be present or absent (i.e. binary choice) in a subset solution. As as result, for NN numbers, we would have in total 2^N2 
 N
   choices (solutions).
+
+
+# knowledge to know
+Heap's algorithm can produce all possible permutations of n objects

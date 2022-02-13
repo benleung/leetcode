@@ -124,4 +124,45 @@ class Solution:
             elif nums[i] + nums[lo] + nums[hi] > 0:
                 hi -= 1
                 
+
+
+'''
+30' 
+
+get too many strange bug and retried for too many times
+'''
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        N = len(nums)
+        i = 0
+        ans = []
+        nums.sort()
+        
+        while i < N and nums[i]<= 0:
+            target = -nums[i]
+            j = i + 1
+            k = N-1
+            while j < k:
+                candidate = nums[j]+nums[k]
+                if target == candidate:
+                    ans.append([nums[i],nums[j],nums[k]])
+                
+                if candidate >=target:
+                    # iterate k to a different value
+                    newK = k-1
+                    while newK >= 0 and nums[newK] == nums[k]:
+                        newK -= 1
+                    k = newK
+                if candidate<=target:
+                    # iterate j to a different value
+                    newJ = j+1
+                    while newJ < N and nums[newJ] == nums[j]:
+                        newJ += 1
+                    j = newJ
             
+            newI = i+1
+            while newI < N and nums[newI] == nums[i]:
+                newI += 1
+            i = newI
+        return ans

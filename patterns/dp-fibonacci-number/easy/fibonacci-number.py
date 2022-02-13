@@ -2,6 +2,12 @@
 within 5'
 
 bottomup, non-optiomized dp
+
+question: what is the time complexity without memorization and dp
+2^n, because Each call to F(n) makes 2 additional calls, to F(n - 1) and F(n - 2). Those 2 calls will then generate 4 calls, which will generate 8, etc
+
+
+
 '''
 
 class Solution:
