@@ -1,4 +1,5 @@
-from itertools import permutations
+from collections import Counter, deque
+from itertools import product
 
-a = 0b100
-print(a<<1+1)
+# a = str(sorted("tan"))
+x = ""

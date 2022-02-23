@@ -33,3 +33,30 @@ class Solution(object):
             h1[p] = word
             h2[word] = p
         return True
+
+'''
+8'
+good to remember the one-to-one mapping is required
+'''
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        pToS = {}
+        sToP = {}
+        words = s.split()
+        if len(words) != len(pattern):
+            return False
+        
+        for i,word in enumerate(words):
+            if not pattern[i] in pToS:
+                pToS[pattern[i]] = word
+            else:
+                if pToS[pattern[i]] != word:
+                    return False
+            if not word in sToP:
+                sToP[word] = pattern[i]
+            else:
+                if sToP[word] != pattern[i]:
+                    return False
+                
+            
+        return True

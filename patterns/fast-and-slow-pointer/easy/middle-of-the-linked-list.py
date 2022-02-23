@@ -23,3 +23,8 @@ class Solution:
         
         
         return slow
+
+
+'''
+second trial with same result: 4'10"
+'''

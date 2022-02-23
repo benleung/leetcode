@@ -1,6 +1,9 @@
 '''
-learn
-- write reduce faster
+revised on 2/23
+'''
+
+'''
+second try: 3'
 '''
 from functools import reduce
 

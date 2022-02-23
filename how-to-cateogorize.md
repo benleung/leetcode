@@ -1,0 +1,4 @@
+- for easy and hard questions, no need to categorize
+- for medium questions, if cannot judge how to category in weekday, just put it in medium
+- at weekends, group the questions into one most related topic
+- if no such topic, just put it inside patterns/

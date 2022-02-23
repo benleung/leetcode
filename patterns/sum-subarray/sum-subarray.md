@@ -1,0 +1,2 @@
+### Technique
+prefix sum

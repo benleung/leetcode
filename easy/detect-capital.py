@@ -1,4 +1,9 @@
 '''
+revised on 2/23, not worthed to revise again
+'''
+
+
+'''
 about 15'
 
 bad
@@ -36,3 +41,24 @@ class Solution(object):
                 if shouldRemainingCapital != isCapital(c):
                     return False
             return True
+
+'''
+6'
+'''
+
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        isFirstLetterUpper = word[0].isupper()
+        
+        
+        
+        if isFirstLetterUpper:
+            for i in range(2, len(word)):
+                if word[i].isupper() != word[i-1].isupper():
+                    return False
+        
+        else:
+            for i in range(1, len(word)):
+                if word[i].isupper():
+                    return False
+        return True
