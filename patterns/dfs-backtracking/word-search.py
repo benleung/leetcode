@@ -1,4 +1,52 @@
 '''
+revisited on 2/24
+34'
+'''
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        Y = len(board)
+        X = len(board[0])
+        
+        neighbours = [(0,1),(0,-1),(-1,0),(1,0)]
+        self.visited = set() # coordinates
+        
+        def backtrack(i, target):
+            (y, x) = target
+            if not (0<=y<Y and 0<=x<X):
+                # out of bound
+                return False
+            
+            if board[y][x] != word[i]: # impossible to out of bount
+                # the candidate fails
+                return False
+            
+            if i == len(word) - 1:
+                # reach the end so final result
+                return board[y][x] == word[i]
+
+            self.visited.add(target)
+            for (dy, dx) in neighbours:
+                newTarget = (y + dy, x+dx)
+            
+                i += 1
+                if backtrack(i, newTarget):
+                    return True
+                i -= 1
+            self.visited.remove(target)
+            return False
+                
+            
+        for y in range(Y):
+            for x in range(X):
+                target = (y,x)
+                if backtrack(0,target):
+                    return True
+            
+        return False
+
+
+'''
 38'
 
 bad

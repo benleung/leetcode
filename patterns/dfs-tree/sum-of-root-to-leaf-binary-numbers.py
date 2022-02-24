@@ -1,3 +1,25 @@
+'''
+2/24 revisited
+10'
+
+dfs (recursive)
+'''
+class Solution:
+    def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, preSum): # preSum exclusive for node, node cannot be None
+            curSum = (preSum<<1) + node.val
+            if not node.left and not node.right:
+                return curSum
+            ans = 0
+            if node.left:
+                ans += dfs(node.left, curSum)
+            if node.right:
+                ans += dfs(node.right, curSum)
+            return ans
+                
+        # root cannot be None    
+        
+        return dfs(root, 0)
 
 '''
 10'

@@ -1,3 +1,95 @@
+'''
+revisited on 2/24, worth try one more time
+bfs iteration
+
+learn
+- order in proper way
+- pair by pair
+'''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        
+        if not root:
+            return True
+        
+        q = deque([root.left, root.right])
+        while len(q) != 0:
+            nextQ = deque()
+            
+            l = q.popleft()
+            r = q.pop()
+
+            while len(q) != 0:
+            
+                if l and r:
+                    if l.val != r.val:
+                        return False
+                    nextQ.append(l.left)
+                    nextQ.append(l.right)
+                    nextQ.append(r.left)
+                    nextQ.append(r.right)
+                elif not l or not r:
+                    # only one is None
+                    return False
+                else:
+                    # both None, do nothing
+                    pass
+                    
+            q = nextQ
+                
+                
+            
+        
+        return True
+
+'''
+revisited on 2/24, worth try one more time
+21' 
+
+learn
+- use ^(xor) wisely -> not only applicable to bit manipulation
+- 
+
+'''
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        
+        
+        def helper(l, r):
+            # itself
+            if (l != None) ^ (r != None):
+                return False
+            if (l == None) and (r == None):
+                return True
+
+            if l.val != r.val:
+                return False
+            # children
+            if not helper(l.left, r.right):
+                return False
+            if not helper(l.right, r.left):
+                return False
+            return True
+        
+        if not root:
+            return True
+        
+        return helper(root.left, root.right)
+
 # turns out to be exactly same as the model answer
 # 30min
 

@@ -1,9 +1,17 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+'''
+2'30"
+'''
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        def helper(node, depth):
+            if node == None:
+                return depth
+            
+            return max(helper(node.left, depth +1), helper(node.right, depth+1))
+        
+        return helper(root, 0)
+
 class Solution(object):
     def maxDepth(self, root):
         """
@@ -16,14 +24,6 @@ class Solution(object):
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 # 3'21"
-
-
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
 '''
 5' use iterations for dfs

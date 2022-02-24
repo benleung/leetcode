@@ -38,3 +38,19 @@ class Solution(object):
             else:
                 right.append(v)
         return self.quicksort(left) + [center] + self.quicksort(right)
+
+
+'''
+2'40"
+'''
+class Solution:
+    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+        N  = len(intervals)
+        if N<= 1:
+            return True
+        intervals.sort(key=lambda x: x[0])
+        for i in range(1,N):
+            if intervals[i-1][1] > intervals[i][0]:
+                return False
+        else:
+            return True

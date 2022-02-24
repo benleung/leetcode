@@ -1,3 +1,7 @@
+'''
+revised once on 2/24, worth reading again
+'''
+
 # 1'
 # there is better solution wiht time complexity O(1)
 class Solution(object):

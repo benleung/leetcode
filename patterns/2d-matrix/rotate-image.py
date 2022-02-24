@@ -1,3 +1,7 @@
+'''
+revisited on 2/24, stuck on counting lower/upper bound
+'''
+
 
 '''
 upper bound and lower bound for i, j is tricky

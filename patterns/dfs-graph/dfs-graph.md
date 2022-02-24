@@ -1,7 +1,6 @@
 ### represent graph using python
 see notion [graph theory]
 
-
 ### graph tranverse using iteration
 
 classic example: accounts-merge
@@ -38,7 +37,7 @@ for email in em_graph:
 
 ```
 
-### Example: Find Path
+### Example: find-path
 
 ```python
 

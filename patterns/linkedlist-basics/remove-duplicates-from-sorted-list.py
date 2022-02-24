@@ -40,3 +40,26 @@ class Solution(object):
                 cur = cur.next
                 
         return sol.next
+
+'''
+8' to solve for second time, but still not smooth enough
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        sol = ListNode()
+        sol.next = head
+        prev = sol
+        
+        while prev.next and prev.next.next:
+            if prev.next.val == prev.next.next.val:
+                prev.next = prev.next.next #removed
+            else:
+                prev = prev.next
+                
+        
+        return sol.next

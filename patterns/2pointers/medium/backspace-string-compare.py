@@ -1,4 +1,11 @@
 '''
+<10'
+
+stack solution is extremely easy, good to remember that
+'''
+
+
+'''
 44'
 
 good

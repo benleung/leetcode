@@ -35,3 +35,35 @@ class Solution(object):
             sol.append(str(counter))
         
         return sol
+
+
+'''
+2/24
+14' to finish for third time (include whiteboarding and understand questions)
+'''
+class Solution:
+    def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
+        
+        cur = lower
+        sol = [] # [[lower,upper]]
+        i = 0
+        while i < len(nums):
+            if nums[i] == cur:
+                i += 1
+                cur += 1
+            else:  # cur < nums[i]
+                sol.append([cur,nums[i]-1])
+                cur = nums[i]
+        
+        # cur -> upper
+        if cur <= upper:
+            sol.append([cur,upper])
+        
+        # data massaging on sol for ""->""
+        for i,s in enumerate(sol):
+            if s[0]==s[1]:
+                sol[i] = str(s[0])
+            else:
+                sol[i] = "{0}->{1}".format(s[0],s[1])
+        
+        return sol

@@ -1,4 +1,10 @@
 '''
+revised on 2/24
+(skip because seldom asked)
+
+'''
+
+'''
 cannot solve due not insufficient knowledge in bit manipulations
 
 learn

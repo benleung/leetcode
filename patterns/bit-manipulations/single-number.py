@@ -1,3 +1,6 @@
+'''
+exactly same as find-the-difference
+'''
 class Solution(object):
     def singleNumber(self, nums):
         dict = {}

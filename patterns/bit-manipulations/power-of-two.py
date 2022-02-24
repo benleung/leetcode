@@ -1,4 +1,10 @@
 '''
+revised on 2/24
+worth do again with bit manipulation
+'''
+
+
+'''
 6'30"
 
 bad

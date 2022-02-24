@@ -1,4 +1,26 @@
 '''
+revised on 2/24
+9'
+time to understand the q.
+'''
+class Solution:
+    def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        # last seen index
+        lastSeenWord1Index = None
+        lastSeenWord2Index = None
+        ans = float("inf")
+        for i, word in enumerate(wordsDict):
+            if word1 == word:
+                if lastSeenWord2Index != None:
+                    ans = min(i - lastSeenWord2Index, ans)
+                lastSeenWord1Index = i
+            if word2 == word:
+                if lastSeenWord1Index != None:
+                    ans = min(i - lastSeenWord1Index, ans)
+                lastSeenWord2Index = i
+        return ans
+
+'''
 17' (just slow in coding, can do faster)
 miss out the case that there can be a->a->b
 '''

@@ -1,4 +1,69 @@
 '''
+14'
+'''
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        R = len(mat)
+        C = len(mat[0])
+        q = deque()
+        for r in range(R):
+            for l in range(C):
+                if mat[r][l] == 0:
+                    q.append((r,l))
+                else: 
+                    mat[r][l] = None
+
+        neighbours = [(0,1),(0,-1),(1,0),(-1,0)]
+        while q:
+            (r, c) = q.popleft()
+            for (dr,dc) in neighbours:
+                newr,newc = r+dr, c+dc
+                if (0<=newr<R and 0<=newc<C) and mat[newr][newc] == None:
+                    mat[newr][newc] = mat[r][c] + 1
+                    q.append((newr,newc))
+
+        return mat
+
+
+'''
+10'
+
+similar to shortest-path-in-binary-matrix
+
+learn
+- initial root not necessary one, could be multiple items for the queue initially
+'''
+
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        R = len(mat)
+        C = len(mat[0])
+        
+        visited = set()
+        q = deque()
+        for r in range(R):
+            for c in range(C):
+                if mat[r][c] == 0:
+                    q.appendleft((r,c,0))
+                    visited.add((r,c))
+                else:
+                    mat[r][c] = float("inf")
+
+        while q:
+            (nextR, nextC, depth) = q.pop()
+            newDepth = depth + 1
+            neighborDiff = [(0,1),(0,-1),(-1,0),(1,0)]
+            for (dr, dc) in neighborDiff:
+                new = (newR, newC) = (dr+nextR, dc+nextC)
+                if 0<=newR<R and 0<=newC<C and new not in visited:
+                    mat[newR][newC] = min(mat[newR][newC], newDepth)
+                    q.appendleft((newR, newC, newDepth))
+                    visited.add(new)
+
+        return mat
+
+
+'''
 30'
 time complexity too slow, overtime
 
@@ -40,41 +105,3 @@ class Solution:
                 ans[r][c] = bfs(r,c)
         
         return ans
-
-
-'''
-10'
-
-similar to shortest-path-in-binary-matrix
-
-learn
-- initial root not necessary one, could be multiple items for the queue initially
-'''
-
-class Solution:
-    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        R = len(mat)
-        C = len(mat[0])
-        
-        visited = set()
-        q = deque()
-        for r in range(R):
-            for c in range(C):
-                if mat[r][c] == 0:
-                    q.appendleft((r,c,0))
-                    visited.add((r,c))
-                else:
-                    mat[r][c] = float("inf")
-
-        while q:
-            (nextR, nextC, depth) = q.pop()
-            newDepth = depth + 1
-            neighborDiff = [(0,1),(0,-1),(-1,0),(1,0)]
-            for (dr, dc) in neighborDiff:
-                new = (newR, newC) = (dr+nextR, dc+nextC)
-                if 0<=newR<R and 0<=newC<C and new not in visited:
-                    mat[newR][newC] = min(mat[newR][newC], newDepth)
-                    q.appendleft((newR, newC, newDepth))
-                    visited.add(new)
-
-        return mat

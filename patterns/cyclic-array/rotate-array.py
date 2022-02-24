@@ -1,3 +1,8 @@
+'''
+revised at 2/24
+not able to come up with the trick of O(1) by swapping only
+'''
+
 # 25 min -> 5min
 # Approach 2: Using Extra Array is used here
 class Solution(object):
