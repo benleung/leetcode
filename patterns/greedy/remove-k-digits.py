@@ -1,4 +1,29 @@
 '''
+revisited on 2/26, but cannot come up with optimal sol
+should revisit in future
+'''
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        N = len(num)
+        ans = deque()
+        i = 0
+        while i < N:
+            if len(ans) ==0 or k == 0 or ans[-1] <= num[i]:
+                ans.append(num[i])
+                i += 1
+            else:
+                ans.pop()
+                k -= 1
+        
+        for _ in range(k):
+            ans.pop()
+        
+        while len(ans) > 1 and ans[0] == "0":
+            ans.popleft()
+        
+        return "".join(ans) if len(ans)>0 else "0"
+
+'''
 good to think by myself, but have smarter solution
 
 learn

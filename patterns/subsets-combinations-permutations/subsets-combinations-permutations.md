@@ -10,5 +10,18 @@ N
   choices (solutions).
 
 
+# cascading
+example: subsets
+```python
+output = [[]] #initial
+
+for num in nums:
+    output += [curr + [num] for curr in output]  # writing in one line is a smart way to avoid problem
+```
+
 # knowledge to know
 Heap's algorithm can produce all possible permutations of n objects
+
+# Careless
+- same number but from different index -> duplicates
+- different order -> duplicates?

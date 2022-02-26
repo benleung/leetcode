@@ -1,8 +1,36 @@
 '''
-get used to append and pop
-
+8' including drawing graph
 '''
 
+from collections import Counter
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        sol = []
+        candidate = []
+        c = Counter(nums)
+        keys = c.keys()
+
+        def backtrack(depth):
+            if depth == len(nums):
+                sol.append(candidate.copy())
+                return
+            
+            for key in keys:
+                if c[key] > 0:
+                    c[key] -= 1
+                    candidate.append(key)
+                    backtrack(depth+1)
+                    c[key] += 1
+                    candidate.pop()
+                    
+            
+        backtrack(0)
+        return sol
+
+'''
+get used to backtracking (append and pop)
+
+'''
 from collections import Counter
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:

@@ -1,3 +1,30 @@
+
+'''
+second trial (10')
+for dp, possible to bottom up by increasing length
+'''
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        N = len(s)
+        h = {}  #(left,right) : True/False
+        maxLength = 0
+        ans = (0,0)
+
+        for i in range(N): # i+1: length
+            for j in range(N-i):  # j = index
+                if i == 0:
+                    h[(j,j)] = True
+                else:
+                    isInBetweenPalindromic = h[(j+1,i+j-1)] if i != 1 else True
+                    isPalindromic = isInBetweenPalindromic and s[j] == s[j+i]
+                    h[(j,i+j)] = isPalindromic
+                    if isPalindromic and i+1>maxLength:
+                        maxLength = i+1
+                        ans = (j,i+j)
+
+        (left,right) = ans
+        return s[left:right+1]
+
 '''
 about 1 hour
 
@@ -28,35 +55,10 @@ class Solution:
         
         return ans
 
-'''
-second trial (10')
-for dp, possible to bottom up by increasing length
-'''
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        N = len(s)
-        h = {}  #(left,right) : True/False
-        maxLength = 0
-        ans = (0,0)
-
-        for i in range(N): # i+1: length
-            for j in range(N-i):
-                if i == 0:
-                    h[(j,j)] = True
-                else:
-                    isInBetweenPalindromic = h[(j+1,i+j-1)] if i != 1 else True
-                    isPalindromic = isInBetweenPalindromic and s[j] == s[j+i]
-                    h[(j,i+j)] = isPalindromic
-                    if isPalindromic and i+1>maxLength:
-                        maxLength = i+1
-                        ans = (j,i+j)
-
-        (left,right) = ans
-        return s[left:right+1]
 
 
 '''
-copied from discussion (explan from center is the best answer)
+copied from discussion (expand from center is the best answer)
 '''
 class Solution:
     def longestPalindrome(self, s: str) -> str:

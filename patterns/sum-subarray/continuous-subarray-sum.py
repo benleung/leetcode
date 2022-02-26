@@ -1,27 +1,25 @@
 '''
-O(N^2) solution TLE
-
-
-bad
-careless on range(N-1)/N+1
+revisited on 2/26 (worth more revisit in future)
+O(N)
+almost one hour
 '''
-
+from collections import defaultdict
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        N = len(nums)
-        dp = [0]*(N+1)
-        cur = 0
-        for i in range(N):
-            cur += nums[i]
-            dp[i+1] = cur
-        for left in range(N-1):
-            for right in range(left+2, N+1):
-                target = dp[right] - dp[left]
-                if target % k == 0:
+        prefixSum = 0
+        d = {}  # first seen index
+        
+        for i,num in enumerate(nums):
+            prefixSum += num
+            prefixSum %= k
+            if prefixSum == 0 and i>0:
+                return True
+            if prefixSum in d:
+                if i - d[prefixSum] >= 2: # continuous subarray of size at least two
                     return True
+            else:
+                d[prefixSum] = i
         return False
-
-
 
 '''
 technique: 
@@ -55,4 +53,28 @@ class Solution:
                 # Just add this index to our list of that prefix sum % k value.
                 seen[prefix_sum % k].append(i)
                 
+        return False
+
+
+'''
+O(N^2) solution TLE
+
+
+bad
+careless on range(N-1)/N+1
+'''
+
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        N = len(nums)
+        dp = [0]*(N+1)
+        cur = 0
+        for i in range(N):
+            cur += nums[i]
+            dp[i+1] = cur
+        for left in range(N-1):
+            for right in range(left+2, N+1):
+                target = dp[right] - dp[left]
+                if target % k == 0:
+                    return True
         return False

@@ -15,12 +15,13 @@ carry = (a&b) << 1
 find-the-difference by xor
 
 # number of bits and value
-number of bits = O(logn), where n is the value
+- time complexity = O(logn), where n is the value
+- `x & (x - 1)` would remove the least significant bit
 
 # power of two/four
 - and operator on non-power of two/four
 - maximum possible value (check whether exist in hex form, 8 charaters 32 bit)
-- `(x - 1) == 0` if only one bit is present
+- `x & (x - 1) == 0` if only one bit is present (because the most significant figure will be affected)
 
 # negative
 ![picture 4](images/0a149bded6a86c953b2b67066e32f67e6fa149dfa8c5be6a14a20d7c5563244b.png)  
@@ -28,3 +29,6 @@ number of bits = O(logn), where n is the value
 
 # rightmost 1-bit
 - `x & (-x)` is a way to keep the rightmost 1-bit and to set all the other bits to 0
+
+# reverse bit
+- (too special)

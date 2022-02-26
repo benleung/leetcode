@@ -1,4 +1,58 @@
+'''
+revisited on 2/26
+should revisit again
+about 30'
+'''
 
+class Trie:
+    def __init__(self):
+        self.root = TreeNode()
+
+    def insert(self, word):
+        node  = self.root
+        for c in word:
+            if c not in node.next:
+                node.next[c] = TreeNode()
+                node = node.next[c]
+                '''
+                this is different from
+                node = node.next[c] = TreeNode()
+                '''
+            else:
+                node = node.next[c]
+            node.words.append("".join(word))
+            
+    def getWordsWithPrefix(self, prefix):
+         # maximum count of 3
+        node  = self.root
+        for i, c in enumerate(prefix):
+            if c not in node.next:
+                return []
+            else:
+                node = node.next[c]
+            if i == len(prefix)-1:
+                node.words.sort()
+                return node.words[:3]
+        
+class TreeNode:
+    def __init__(self):
+        self.next = {} # "character" -> TreeNode
+        self.words = list()
+
+class Solution:
+    def suggestedProducts(self, A: List[str], searchWord: str) -> List[List[str]]:
+        trie = Trie()
+        for a in A:
+            trie.insert(a)
+        
+        ans = []
+        word = ""
+        for c in searchWord:
+            word += c
+            row = trie.getWordsWithPrefix(word)
+            ans.append(row)
+        
+        return ans
 
 # example of without using trie https://leetcode.com/problems/search-suggestions-system/discuss/436564/Python-A-simple-approach-without-using-Trie
 

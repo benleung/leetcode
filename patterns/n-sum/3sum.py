@@ -1,3 +1,13 @@
+'''
+should revisit
+24'
+
+can be faster, especially for
+- writing loop to finding next unique index
+
+'''
+
+
 # 48' (fail because too slow)
 
 class Solution:

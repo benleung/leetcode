@@ -1,4 +1,56 @@
 '''
+24'
+
+good
+- use backtrak correctly
+
+learn
+"{0:2d}"
+'''
+class Solution:
+    def readBinaryWatch(self, turnedOn: int) -> List[str]:
+        lights = [
+            (8,0),
+            (4,0),
+            (2,0),
+            (1,0),
+            (0,32),
+            (0,16),
+            (0,8),
+            (0,4),
+            (0,2),
+            (0,1),
+            (0,0),
+        ] # (h,m)
+        
+        self.h = 0
+        self.m = 0
+        self.remain = turnedOn
+        ans = []
+        
+        def backtrack(start):
+            if start>=len(lights):
+                return
+            if self.remain == 0 and 0<=self.h<12 and 0<=self.m<60:
+                ans.append("{0}:{1:02d}".format(self.h,self.m))
+                return
+            
+            (dh, dm) = lights[start]
+            # this bit is turned on
+            self.h, self.m = self.h+dh, self.m+dm
+            self.remain -= 1
+            backtrack(start + 1)
+            self.remain += 1
+            self.h, self.m = self.h-dh, self.m-dm
+            
+            # this bit is turned off
+            backtrack(start + 1)
+
+        backtrack(0)
+
+        return ans
+
+'''
 3' understand q.
 
 17'40" finish coding
@@ -51,55 +103,3 @@ class Solution(object):
         return sol
     def f(self, number):
         return str(number) if number>= 10 else "0{0}".format(number)
-
-'''
-24'
-
-good
-- use backtrak correctly
-
-learn
-"{0:2d}"
-'''
-class Solution:
-    def readBinaryWatch(self, turnedOn: int) -> List[str]:
-        lights = [
-            (8,0),
-            (4,0),
-            (2,0),
-            (1,0),
-            (0,32),
-            (0,16),
-            (0,8),
-            (0,4),
-            (0,2),
-            (0,1),
-            (0,0),
-        ] # (h,m)
-        
-        self.h = 0
-        self.m = 0
-        self.remain = turnedOn
-        ans = []
-        
-        def backtrack(start):
-            if start>=len(lights):
-                return
-            if self.remain == 0 and 0<=self.h<12 and 0<=self.m<60:
-                ans.append("{0}:{1:02d}".format(self.h,self.m))
-                return
-            
-            (dh, dm) = lights[start]
-            # this bit is turned on
-            self.h, self.m = self.h+dh, self.m+dm
-            self.remain -= 1
-            backtrack(start + 1)
-            self.remain += 1
-            self.h, self.m = self.h-dh, self.m-dm
-            
-            # this bit is turned off
-            backtrack(start + 1)
-
-        backtrack(0)
-
-        return ans

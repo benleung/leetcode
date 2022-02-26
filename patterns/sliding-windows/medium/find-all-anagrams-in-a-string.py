@@ -1,3 +1,10 @@
+
+
+'''
+revisited on 2/26, 10'
+hesitated about the syntax on Counter
+'''
+
 '''
 8'30"
 

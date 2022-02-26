@@ -1,0 +1,2 @@
+- using last end index i
+- decision of include this or not include this

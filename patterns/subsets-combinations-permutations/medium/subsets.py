@@ -3,7 +3,7 @@
 https://leetcode.com/problems/subsets/solution/
 '''
 
-# approach 1 (i used)
+# approach 1 (build-in functions)
 from itertools import combinations
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
@@ -12,13 +12,13 @@ class Solution:
             sol.extend(list(combinations(nums, i)))
         return map(lambda i: list(i), sol)   # common for using combinations
 
-# approach 2 (cascading)
+# approach 2 (cascading)(preferred)
 '''
 At each step one takes new integer into consideration and generates new subsets from the existing ones
 '''
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        output = [[]]
+        output = [[]] #initial
         
         for num in nums:
             output += [curr + [num] for curr in output]  # writing in one line is a smart way to avoid problem

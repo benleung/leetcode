@@ -38,7 +38,7 @@ if start>=len(lights) or not (0<=self.h<12 and 0<=self.m<60):
     return
 ```
 
-3. backtrack for one branch
+3. how to backtrack a branch
 ```python
 # this bit is turned on
 self.h, self.m = self.h+dh, self.m+dm
@@ -48,12 +48,64 @@ self.remain += 1
 self.h, self.m = self.h-dh, self.m-dm
 ```
 
-4. backtrack for other possible branch for this depth
+4. backtrack different branches
+- without loop
 ```python
-# this bit is turned off
-backtrack(start + 1)
+cur.append(s[first].lower())
+backtrack(first+1)
+cur.pop()
+
+cur.append(s[first].upper())
+backtrack(first+1)
+cur.pop()
 ```
-note that sometimes this is done by for loop, if there are many branches for this depth
+
+- with for loop (backtrack with Counter)
+![picture 1](images/20b94cfa7c0e54c7e36b996bbc47540f07e8d5ae121da77b69af8da2d961df48.png)
+```python
+for i in range(0, count + 1):
+  if self.curSum +  i*key > target:  # note: technique to skip other unnecessary branches
+      continue
+  
+  for _ in range(i):
+      curCombs.append(key)
+
+  self.curSum +=  i*key
+  skipThisDepth = backtrack(start+1)
+  self.curSum -=  i*key
+  
+  for _ in range(i):
+      curCombs.pop()
+```
+
+- with for loop (backtrack with Counter - conditional branches)
+example: permutations-ii
+![picture 2](images/8d6ffbcc5a65400fd631850777039590002fd11535b022a926a214e442ff2962.png)  
+```python
+from collections import Counter
+class Solution:
+  def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+    sol = []
+    candidate = []
+    c = Counter(nums)
+    keys = c.keys()
+
+    def backtrack(depth):
+        if depth == len(nums):
+            sol.append(candidate.copy())
+            return
+        
+        for key in keys:
+            if c[key] > 0:
+                c[key] -= 1
+                candidate.append(key)
+                backtrack(depth+1)
+                c[key] += 1
+                candidate.pop()
+
+    backtrack(0)
+    return sol
+```
 
 # Terminal with side-effect vs terminal with return value
 ### side-effect

@@ -1,4 +1,10 @@
 '''
+revisit on 2/25 but still cannot solve, a rare question
+imagine start from depth end is easier to judge
+'''
+
+
+'''
 cannot solve
 solution is here: https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/discuss/1684927/Python%3A-All-DP-solutions
 

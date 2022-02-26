@@ -1,3 +1,23 @@
+
+'''
+revisit on 2/25
+12'
+'''
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        N = len(nums)
+        d = [0]*N
+        def dp(i):
+            if i<0:
+                return 0
+            else:
+                return d[i]
+        
+        for i in range(N):
+            d[i] = max(dp(i-2) + nums[i], dp(i-1))
+        return d[N-1]
+
+
 '''
 Method1: Recursive Approach with memorization
 

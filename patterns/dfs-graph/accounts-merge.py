@@ -1,4 +1,96 @@
 '''
+revisted: 2/25
+a very good example of dfs graph, should revisit again
+stuck at bug
+13' after knowing the answer
+'''
+from collections import defaultdict
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:        
+        graph = defaultdict(set)
+        email_to_name = {}
+        ans = []
+        seen = set()
+        
+        for a in accounts:
+            name = a[0]
+            firstEmail = a[1]
+            for email in a[1:]:
+                graph[firstEmail].add(email)
+                graph[email].add(firstEmail)
+                email_to_name[email] = name
+
+        for node in graph:
+            
+            stack = []
+            if node not in seen:
+                stack.append(node)
+                seen.add(node)
+            else:
+                continue
+
+            
+            emails = set()
+                
+            while stack:
+                e = stack.pop()
+                emails.add(e)
+
+                seen.add(e)
+                stack.extend(graph[e] - seen)
+                
+            ans.append([email_to_name[node]] + sorted(list(emails)))
+            
+        return ans
+
+
+
+from collections import defaultdict
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:        
+        
+        graph = defaultdict(set)
+        email_to_name = {}
+        seen = set()
+        ans = []
+        
+        for a in accounts:
+            name = a[0]
+            emails = set(a[1:])
+            for email in emails:
+                graph[email] = graph[email].union(emails) #  - {email}
+                email_to_name[email] = name
+                
+        for email in graph:
+            if email in seen:
+                continue
+            
+            emails_to_add = []
+            # dfs
+            # edges = graph[email]
+            stack = list(graph[email] - seen)
+            seen |= set(stack)
+            while stack:
+                e = stack.pop()
+                # print(e)
+                
+                # this e is visited once only
+                emails_to_add.append(e)
+                
+                g = graph[e] 
+                a = graph[e] - seen
+                l= list(graph[e] - seen)
+                
+                stack.extend(l)
+                seen |= graph[e]
+            
+            # this group is visited once only
+            emails_to_add.sort()
+            ans.append([email_to_name[email]] + emails_to_add)
+            
+        return ans
+
+'''
 1 hr
 
 special method, but too slow
