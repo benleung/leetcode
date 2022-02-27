@@ -9,7 +9,6 @@ For a given number, it could be present or absent (i.e. binary choice) in a subs
 N
   choices (solutions).
 
-
 # cascading
 example: subsets
 ```python
@@ -19,9 +18,29 @@ for num in nums:
     output += [curr + [num] for curr in output]  # writing in one line is a smart way to avoid problem
 ```
 
+# cascading (iterative)(avoid duplications)
+example: subsets-ii
+```python
+sol = [[]]
+nextSubsets =[]
+nums.sort()
+
+for i in range(len(nums)):
+    isThisNumDuplicate = i>0 and nums[i-1] == nums[i]
+    
+    if not isThisNumDuplicate:
+        nextSubsets = sol.copy()
+
+    for j in range(len(nextSubsets)):
+        nextSubsets[j] = nextSubsets[j] + [nums[i]]
+
+    sol += nextSubsets
+```
+
 # knowledge to know
 Heap's algorithm can produce all possible permutations of n objects
 
 # Careless
 - same number but from different index -> duplicates
 - different order -> duplicates?
+- empty set is also considered?

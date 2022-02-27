@@ -28,11 +28,12 @@ try to divide into subproblem by looking at different children
 ## step 2: 
 - arrange parameter
   - `node` which is a must for tree. define whether it could be null (non-nullable is easy to handle)
-  - anything (e.g. `targetSum`) that is required divide the subproblem (by considering the parent node that is already explored)
+  - anything (e.g. `targetSum`) that is required divide the subproblem (by considering the parent node that is already explored) -> not required if not information is needed from parent
 
 ## step 3: 
 - terminal condition (return value method used here, from backtracking note)
   - `not node.left and not node.right` is a common condition (reach the end of leaf)
+
 
 ## note:
 - should understand that 
@@ -84,3 +85,13 @@ class Solution:
 ## point 3: stack
 - use stack -> dfs
 - `append(node.right)` -> `append(node.left)` implies the order of traversal in dfs manner with left first and right on hold
+
+# technique: side effect and return value at the same time
+example : maximum-average-subtree
+
+check whenever return
+```python
+if not node.left and not node.right:
+    self.maxAvg = max(node.val, self.maxAvg)
+    return (node.val, 1)
+```
