@@ -1,4 +1,4 @@
-# build a heap
+# build a heap (also called priority queue)
 - first put the new node at the bottom of tree by dfs
 - swap the node with its pattern up the root if necessary
 
@@ -101,3 +101,43 @@ my_heap.insert(10)
 
 print(my_heap.delete_min()) # removing min node i.e 5 
 ```
+
+
+# next max value
+- monotonic stack is not the optimal for "next max value",
+- in case the value of each element might be changed
+
+
+# explaination of heapq
+by default heap is min-heap
+
+```python
+heap = []
+
+heapq.heapify(heap)
+
+heap[0]  # smallest value here
+
+# Push the value item onto the heap, maintaining the heap invariant.
+heapq.heappush(heap, item)
+
+# Pop and return the smallest item from the heap, maintaining the heap invariant. If the heap is empty, IndexError is raised. To access the smallest item without popping it, use heap[0].
+heapq.heappop(heap) # the min
+```
+
+- no fixed heap size functionality
+- no max-heap python built in library, so convert *-1 when push, and *-1 after pop
+
+
+# n-largest / n-smallest
+```python
+heapq.nsmallest(k, h.keys(), key=lambda word: (-h.get(word), word))
+```
+
+- a good technique to put (xxxx, i) in the heap, where i is the index
+
+# technique of keep a heap of size k
+-  if want the smallest k-elements
+  - assume elements with size n
+  - build a max heap of size k
+  - for k+1 to n element, heappush and heappop, to make sure the max value in the heap aways poped out

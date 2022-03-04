@@ -75,7 +75,7 @@ def printInorder(root):
         printInorder(root.right)
 ```
 
-common applications: sort tree into sorted list
+common applications: sort binary search tree into sorted list
 ```python
 def inorder(r: TreeNode):
     return inorder(r.left) + [r.val] + inorder(r.right) if r else []
@@ -108,3 +108,12 @@ def printPreorder(root):
             return []
         return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
 ```
+
+# pass info
+## from parent to child
+- iteration: through (..., ..., ...) as node
+- recursion: through parameter
+  - example: validate-binary-search-tree
+
+## from child to parent
+- recursion: through return value

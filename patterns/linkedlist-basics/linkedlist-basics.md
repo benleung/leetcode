@@ -58,3 +58,17 @@ Code according to graph
 
 ### technique 1
 when attempt to change arrow, before writing `cur.next = prev` , keep `tmp = cur.next` first
+
+# delete node
+```python
+targetNode.next.prev = targetNode.prev
+targetNode.prev.next = targetNode.next
+```
+
+- use dummy head and dummy tail
+- doubly linked list is required (single direction is not enough)
+
+# technique of deep copy of node
+## point: use dictionary
+- solve the problem that same node cannot be identified
+- node can be used as a hashkey of dictionary (address)
