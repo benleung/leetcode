@@ -211,6 +211,7 @@
 - when running loop, be careful about the index variable, whether wrongly used the outer one
 - remove leading 0, but keep 0 if only one 0 left
 - can i use the same element more than once
+- forgetting to add visited before initial
 
 # knowledge on python
 - deque.pop(n) is not O(1) (it is a double linked list, only end or front is O(1))

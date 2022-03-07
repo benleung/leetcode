@@ -128,6 +128,19 @@ heapq.heappop(heap) # the min
 - no fixed heap size functionality
 - no max-heap python built in library, so convert *-1 when push, and *-1 after pop
 
+# max heap wrapper
+```python
+def heappush(x):
+    heapq.heappush(maxheap, -x)
+    if len(maxheap) == k + 1:
+        heapq.heappop(maxheap)
+    
+def heappop():
+    return -heapq.heappop(maxheap)
+
+def heapmax():
+    return -maxheap[0]
+```
 
 # n-largest / n-smallest
 ```python
@@ -135,6 +148,9 @@ heapq.nsmallest(k, h.keys(), key=lambda word: (-h.get(word), word))
 ```
 
 - a good technique to put (xxxx, i) in the heap, where i is the index
+
+## n-smallest without nsmallest libraryy
+- use max heap
 
 # technique of keep a heap of size k
 -  if want the smallest k-elements

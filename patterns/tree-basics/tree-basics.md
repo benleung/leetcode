@@ -1,6 +1,14 @@
 # Basic Knowledge
-There is a unique node called root in trees
-There will not be any cycle
+- no cycle
+```python
+parent = {}  # use parent hash to check
+```
+
+- fully connected
+```python
+len(parent) == n
+```
+example: graph-valid-tree
 
 # object implementation of tree
 ```python

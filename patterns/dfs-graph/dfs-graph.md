@@ -2,6 +2,14 @@
 other advanced knowledge: see notion [graph theory]
 
 
+# knowledge on graph
+- undirected edge
+need to build graph in a way that 
+```python
+a.append(b)
+b.append(a)
+```
+
 # Build Up Graph Data
 ![picture 7](images/2148a4c895d49c8e88cfb6bbfe2eb8f68dfb5223d02302e09b3cd7da2266d287.png)  
 ## Data Representation
@@ -92,9 +100,10 @@ def find_path(graph, start, end, path=[]):
 # Node Indegree
 example: course-schedule-ii
 
-# Handle graph with cycle (recurion)(Topological Sort)
+# Handle graph with cycle (recurion)(Topological Sort)(preferred)
 - defininition of Topological Sort
   - find a global order for all nodes in a DAG (Directed Acyclic Graph) with regarding to their dependencies
+- this method doesn't work for undirectional graph (because next node's adjacent is the current node)
 
 ```python
 from collections import defaultdict
@@ -122,7 +131,7 @@ class Solution:
                     return
                 if color[adj] == Solution.WHITE:
                     dfs(adj)
-            color[node] = Solution.BLACK
+            color[node] = Solution.BLACK # Black end of graph
             ans.append(node) #point 3: stack
             
         
@@ -148,7 +157,7 @@ class Solution:
 
 # Handle graph with cycle (iteration)(Topological Sort)
 example: course-schedule
-```
+```python
 class GNode(object):
     """  data structure represent a vertex in the graph."""
     def __init__(self):
