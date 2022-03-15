@@ -1,3 +1,6 @@
+'''
+2'40"
+'''
 from collections import deque
 
 class Solution(object):

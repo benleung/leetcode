@@ -1,4 +1,28 @@
 '''
+revisited on 3/8
+22'
+'''
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        if total % 2 == 1:
+            return False
+        total //= 2
+        N = len(nums)
+        dp = [[False] * (total+1) for _ in range(N+1)]
+        for i in range(N+1):
+            dp[i][0] = True
+        
+        for i, num in enumerate(nums):
+            for j in range(1, total+1):
+                if dp[i][j]: # forgot
+                    dp[i+1][j] = True
+                if j - num >= 0 and dp[i][j-num]:
+                    dp[i+1][j] = True
+
+        return dp[N][total]
+
+'''
 revisited on 2/25
 20'
 '''

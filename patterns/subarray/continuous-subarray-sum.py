@@ -1,4 +1,22 @@
 '''
+revvisited on 3/8 (worth more revisit)
+'''
+from collections import defaultdict
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        modulusSum = {0: -1}
+        prefixSum = 0
+        for i, num in enumerate(nums):
+            prefixSum += num
+            if prefixSum%k in modulusSum:
+                if i-modulusSum[prefixSum%k] >= 2:
+                    return True
+            else:
+                modulusSum[prefixSum%k] = i
+        else:
+            return False
+
+'''
 revisited on 2/26 (worth more revisit in future)
 O(N)
 almost one hour

@@ -95,3 +95,6 @@ if not node.left and not node.right:
     self.maxAvg = max(node.val, self.maxAvg)
     return (node.val, 1)
 ```
+
+# tree with backtrack
+path-sum-iii as a good example

@@ -6,11 +6,14 @@
 - tree-basics
   - O(n) for finding height
   - O(n) for finding binary search tree, unless the tree is balanced
-  - array implementation of Tree
+  - array implementation of Tree (without dummy head)
     - children at indices 2i + 1 and 2i + 2 
     - its parent floor((i − 1) ∕ 2)
+  - array implementation of Tree (with dummy head)
+    - children at indices `2i` and `2i + 1`
+    - its parent `i∕/2`
   - binary search tree
-    - insert
+    - insert by recursion
   - traversals
     - inorder
       - inorder of BST -> sorted list
@@ -26,6 +29,7 @@
   - lowest-common-ancestor-of-a-binary-tree is a classic problem 
     - solve by dfs-backtracking on tree (but more like recursive)
   - binary tree and binary search tree are different
+  - check whether valid tree graph-valid-tree (parent hash)
 
 - bfs-tree
   - symmetric-tree can be solved by bfs
@@ -46,6 +50,8 @@
     - remove-duplicates-from-sorted-list
   - variable head
     - reverse-linked-list
+  - lru: should use doubly linked list
+
 
 - backtrack
   - general approach
@@ -55,6 +61,7 @@
     - branches
   - terminal (side effect, return)
   - revisit (inplace, revisit storage)
+  - often use "index" for backtrack increment
 
 - bit manipulation
   - counting-bits is a classic problem to memorize
@@ -89,17 +96,17 @@
 
 - dfs graph
   - create graph (all directly/indirectly connect)
-  - tranversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
+  - traversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
 
 - dfs tree
   - recursive
-    - imagine about how to tranverse
+    - imagine about how to traverse
     - terminal condition of `not node.left and not node.right`)
   - iterations
 
 - dp-knapsack-01
   - method of all combinations
-  - Tabulation 2-D array (meaning of i,j,d[i][j]) _should revise, easy forget after 2 days..._
+  - Tabulation 2-D array (meaning of i,j,d[i][j]) _should revise, easy forget after 2 days (forget again on march 8)..._
   - use or not use -> formula (or)
 
 - dp-knapsack-unbounded
@@ -112,6 +119,7 @@
 - dp-lis
   - lis
     - O(N^2) solution, using last end index i
+    - the optimal solution is however, without using dp, but intelligently build an array with binary search
   - num of lis
     - DP array can store more than one thing by tuple
 
@@ -153,9 +161,9 @@
 
 - prefix-tree
   - better sort first before insert
+  - trie is perfect for word search (Boggle problem)
 
 - priority-queue
-  - how to build a heap? (to revise in future before interview)
 
 - quickselect
   - revise before interview
@@ -188,7 +196,7 @@
   - same value of different index, avoid duplication -> counter
 
 # easy techniques
-- for Elementary Math, use carray, but dun forget last carry
+- for Elementary Math, use carry, but dun forget last carry
 - smart ways to avoid duplicate -> sort -> compare with last node
 - 1-to-1: 2 hashmap is required
 - stack is a good datastructure for possibly removing/comparing with last element (e.g. valid-parentheses, backspace-string-compare)

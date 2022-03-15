@@ -1,4 +1,28 @@
 '''
+revisited on 3/8
+2'
+'''
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        
+        def isMirror(left, right):
+            if left == None and right == None:
+                return True
+            elif left == None or right == None:
+                return False
+            
+            if left.val != right.val:
+                return False
+            
+            return isMirror(left.left, right.right) and isMirror(left.right, right.left)
+        
+        return isMirror(root.left, root.right)
+
+'''
 revisited on 2/24, worth try one more time
 bfs iteration
 

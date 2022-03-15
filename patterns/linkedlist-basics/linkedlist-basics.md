@@ -72,3 +72,7 @@ targetNode.prev.next = targetNode.next
 ## point: use dictionary
 - solve the problem that same node cannot be identified
 - node can be used as a hashkey of dictionary (address)
+
+# merge linked list
+merge-two-sorted-lists
+merge-k-sorted-lists

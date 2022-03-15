@@ -210,3 +210,7 @@ class Solution(object):
             return False
 
 ```
+
+
+# weigthed graph
+abc243_e is a good example

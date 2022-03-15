@@ -9,7 +9,7 @@
 
 ```python
 """
-Min Heap Implementation in Python
+Min Heap Implementation in Python (should be done by array to handle tree)
 """
 class MinHeap:
     def __init__(self):
