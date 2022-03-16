@@ -125,3 +125,11 @@ def printPreorder(root):
 
 ## from child to parent
 - recursion: through return value
+
+# Minimum Spanning Tree (Using Kruskal's algorithm)
+connecting-cities-with-minimum-cost
+- key point to remember
+  - number of edges = no. of nodes -1
+  - use visited hashmap
+  - use min hash map
+  - algorithm: chose the min edge (always to )
