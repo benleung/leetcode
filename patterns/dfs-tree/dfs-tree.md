@@ -98,3 +98,11 @@ if not node.left and not node.right:
 
 # tree with backtrack
 path-sum-iii as a good example
+
+# height of a node
+- from top
+  - bfs: easy
+  - dfs: by 
+- from bottom
+  - dfs: by return value of heightOfTree()
+  - example: find-leaves-of-binary-tree

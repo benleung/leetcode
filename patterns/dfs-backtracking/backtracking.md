@@ -137,3 +137,11 @@ reusing depth to filter out some choices are common
 
 # Time Complexity
 O(N^D) # where B is the maximum number of branches for each depth, and D is the number of depth
+
+# N-Queens
+n-queens
+- 1 queen on each row for backtracking
+- knowledge about diagonal
+
+# other note:
+- when difficult to +xxx, -xxx to go back and forth, it might be better to just use parameter instead

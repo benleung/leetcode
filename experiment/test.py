@@ -1,4 +1,2 @@
-a = {1,2,3}
-x = set()
-x.add(a)
-print(x)
+x = [0,3,0,2,8,2,17,8,4,14,4,6]
+print(print(sum(x)))

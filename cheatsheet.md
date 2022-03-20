@@ -209,7 +209,9 @@
 - convert into graph to observe the up and down
 - queue
   - appendleft -> pop and append -> popleft has the same result (depends on how to want to visualize)
-
+while pile>0:
+    hour += 1
+    pile -= speed
 
 # common careless mistake
 - "".join expect each element to be str
@@ -220,7 +222,11 @@
 - remove leading 0, but keep 0 if only one 0 left
 - can i use the same element more than once
 - forgetting to add visited before initial
-
+- be careful of order of execution, when modifying index
+  ```python
+  ch_count_in_window[s[l]] -= 1
+  l += 1
+  ```
 # knowledge on python
 - deque.pop(n) is not O(1) (it is a double linked list, only end or front is O(1))
 - set

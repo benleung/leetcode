@@ -45,3 +45,9 @@ class Solution:
 # common quiz questions
 - maximum or minimum of somthing is very common
 - Divide and conquer approaches can be parallelized while dynamic programming approaches cannot.
+
+# stone game
+- change the game so that whenever Bob scores points, it deducts from Alice's score instead
+  - useful techniques for 2 player game
+- front-end -> `dp[i][j]` to represent `piles[i], piles[i+1], ..., piles[j]`
+- depth can be deduced from i, j, N
