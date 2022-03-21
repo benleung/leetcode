@@ -1,2 +1,3 @@
-x = [0,3,0,2,8,2,17,8,4,14,4,6]
-print(print(sum(x)))
+for i in range(998244353):
+  pass
+print(0)
