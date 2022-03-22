@@ -133,3 +133,8 @@ connecting-cities-with-minimum-cost
   - use visited hashmap
   - use min hash map
   - algorithm: chose the min edge (always to )
+
+# path
+binary-tree-maximum-path-sum
+- technique of side effect (walk through paths of parent xxx)
+- technique of return value (sum that has root as the end)
