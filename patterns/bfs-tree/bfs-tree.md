@@ -26,3 +26,7 @@ operation for this depth
 
 ## method 2: append info to a node
 (details: WIP)
+
+# column number
+q.append((n.left, 2*col))
+q.append((n.right, 2*col + 1))

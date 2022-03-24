@@ -1,4 +1,33 @@
 '''
+dp with recursion, kind of brute force
+'''
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        R = len(matrix)
+        C = len(matrix[0])
+        
+        dp = {}
+        
+        def backtrack(r,c):
+            if r >= R or c >= C:
+                return False
+            
+            if (r,c) in dp:
+                return dp[(r,c)]
+            
+            if matrix[r][c] > target:
+                return False
+            if matrix[r][c] == target:
+                return True
+            if backtrack(r+1, c):
+                return True
+            if backtrack(r, c+1):
+                return True
+            dp[(r,c)] = False
+            return False
+        return backtrack(0,0)
+
+'''
 1 hr
 should have smarter way to start from bottom-left:
 

@@ -1,3 +1,9 @@
+
+'''
+- Point: "" to represent [, wait for ] to happen and fill up
+
+'''
+
 '''
 1 hr
 not familiar with stack and decoding algorithm, need practice

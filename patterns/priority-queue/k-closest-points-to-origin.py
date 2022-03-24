@@ -1,4 +1,9 @@
 '''
+revisit on 3/24 
+4'30"
+'''
+
+'''
 not familiar with heap
 '''
 import math

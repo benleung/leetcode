@@ -1,4 +1,45 @@
 '''
+7'
+'''
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        self.left = 0
+        self.right = 0
+        
+        sol = []
+        
+        
+        def backtrack(candidates):
+            # terminal condition
+            if len(candidates) == 2*n:
+                sol.append("".join(candidates))
+                return
+
+            is_left_possible = self.left < n
+            is_right_possible = self.right < n and self.left > self.right
+            
+            if is_left_possible:
+                candidates.append("(")
+                self.left += 1
+                backtrack(candidates)
+                candidates.pop()
+                self.left -= 1
+            if is_right_possible:
+                candidates.append(")")
+                self.right += 1
+                backtrack(candidates)
+                candidates.pop()
+                self.right -= 1
+                
+        
+        
+        backtrack([])
+        
+            
+        return sol
+
+'''
 
 '''
 

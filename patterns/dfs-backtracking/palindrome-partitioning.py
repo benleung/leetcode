@@ -1,4 +1,44 @@
 '''
+23'
+'''
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        ans = []
+        
+        def is_palidrome(s):
+            N = len(s)
+            for left in range(N//2):  # right center
+                if s[left] != s[N-left-1]:
+                    return False
+            return True
+        
+        def backtrack(candidate, prefix, i): 
+            # candidate: ["a","a","b"]
+            # prefix: "a"
+            
+            if i == len(s):
+                if prefix == []:
+                    ans.append(candidate.copy())
+                return
+            
+            
+            # reserve for next index
+            prefix.append(s[i])
+            backtrack(candidate, prefix, i+1)
+            prefix.pop()
+            
+            # check whether palidrome, and partition now
+            prefix.append(s[i])
+            if is_palidrome(prefix):
+                candidate.append("".join(prefix))
+                backtrack(candidate, [], i+1)
+                candidate.pop()
+            prefix.pop()
+        
+        backtrack([], [], 0)
+        return ans
+
+'''
 40'
 got stuck in start index a bit
 '''

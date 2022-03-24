@@ -1,0 +1,4 @@
+  - shortest path is used
+  - bfs from goal(s) or start(s) are possible
+  - remember to avoid revisiting
+  - attach additional info (depth) 

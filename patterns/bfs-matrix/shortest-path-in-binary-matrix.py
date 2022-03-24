@@ -1,3 +1,7 @@
+'''
+retry and finish in 12'
+'''
+
 # 12' design
 # 44' finish coding but TLE
 '''
