@@ -1,4 +1,44 @@
 '''
+10'
+cycle: change
+'''
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        N = len(nums)
+        
+        def maxSubarraySum(nums):
+            dp = [0]*N # end with xxx
+            ans = -inf
+            for i in range(N):
+                num = nums[i]
+                if i == 0:
+                    dp[i] = num
+                else:
+                    dp[i] = max(num, num + dp[i-1])
+                ans = max(ans, dp[i])
+            return ans
+        
+        def minSubarraySum(start,end): # end index exclusive
+            M = end-start
+            if M<=0:
+                return 0
+            dp = [0]*M # end with xxx
+            ans = inf
+            for i in range(M):
+                num = nums[i+start]
+                if i == 0:
+                    dp[i] = num
+                else:
+                    dp[i] = min(num, num + dp[i-1])
+                ans = min(ans, dp[i])
+            return ans
+            
+        
+        minInnerSum = min(0, minSubarraySum(1,N-1)) # all integer positive is possible
+        
+        return max(maxSubarraySum(nums), sum(nums) - minInnerSum)
+
+'''
 more then 30'
 stuck at cycle 
 '''

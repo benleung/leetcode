@@ -1,3 +1,29 @@
+# syntax for python
+- max(square, key = lambda k: square[k])
+- cmp_to_key
+def mycmp(a, b):
+    print("comparing ", a, " and ", b)
+    if a > b:
+        return 1
+    elif a < b:
+        return -1
+    else:
+        return 0
+  
+  
+print(sorted([1, 2, 4, 2], key=functools.cmp_to_key(mycmp)))
+
+# bit manipulations
+carry = (a&b) << 1
+sum_without_carry = a ^ b
+`x & (x - 1)` remove the least significant bit
+-x = ~x + 1
+mask = 0xFFFFFFFF
+x = x & mask
+~(a ^ mask)
+`x & (-x)` is a way to keep the rightmost 1-bit and to set all the other bits to 0
+
+
 # 2-d matrix
 - Rotate: technque of Rotate Groups of Four Cells (rotate-image)
 - Positive diagonal: ↗️ r+c

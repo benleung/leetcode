@@ -1,4 +1,3 @@
-
 '''
 second trial (10')
 for dp, possible to bottom up by increasing length

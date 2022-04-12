@@ -1,4 +1,35 @@
 '''
+24'
+
+'''
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        N = len(s)
+        stack = []
+        
+        count = Counter(s) # count of character left possible to add
+        installed = set()
+        
+        def add(c):
+            stack.append(c)
+            installed.add(c)
+        
+        def pop():
+            installed.remove(stack.pop())
+            
+        def can_pop():
+            return stack and count[stack[-1]] >= 1
+            
+        for c in s:
+            if c not in installed:
+                while can_pop() and c < stack[-1]:
+                    pop()
+                add(c)
+            count[c] -= 1
+        
+        return "".join(stack)
+
+'''
 1 hr
 with limitted hints, and get reminded of remove-k-digits
 '''

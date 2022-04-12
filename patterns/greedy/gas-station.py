@@ -1,4 +1,6 @@
 '''
+4/10 revisit 10'
+
 greedy
 the math behind is very tricky to prove
 '''

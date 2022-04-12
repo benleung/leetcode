@@ -8,3 +8,5 @@ koko-eating-bananas
   try later as this is classic
 permutations-ii
   want to revise this with backtrack
+nested-list-weight-sum
+  classic recursion

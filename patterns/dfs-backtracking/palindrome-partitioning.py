@@ -1,4 +1,38 @@
 '''
+20'
+'''
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        ans = []
+        
+        candidate = []
+        
+        def isPalindrome(string):
+            N = len(string)
+            for i in range(N//2):
+                if string[i] != string[N-i-1]:
+                    return False
+            return True
+        
+        def backtrack(i):
+            N = len(s)
+            if i >= N:
+                ans.append(candidate.copy())
+                return
+            cur = ""
+            for j in range(i, N):
+                cur += s[j]
+                if isPalindrome(cur):
+                    candidate.append(cur)
+                    backtrack(j+1)
+                    candidate.pop()
+            
+        
+        backtrack(0)
+        
+        return ans
+
+'''
 23'
 '''
 class Solution:

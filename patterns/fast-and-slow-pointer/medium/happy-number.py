@@ -1,3 +1,29 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        fast, slow = n, n
+        
+        def next_number(x):
+            digit = 1
+            result = 0
+            while digit <= x:
+                result += ((x//digit) % 10)**2
+                digit *= 10
+            return result
+        
+        if fast == 1:
+            return True
+        while True:
+            fast = next_number(fast)
+            if fast == 1:
+                return True
+            fast = next_number(fast)
+            if fast == 1:
+                return True
+
+            slow = next_number(slow)
+            if slow == fast:
+                return False
+
 '''
 8'
 
