@@ -1,4 +1,6 @@
 '''
+revisited on 4/14
+9' (using iteration)
 revisited on 2/24
 5'
 trick in understanding what is "left leave" (dun get into recu)

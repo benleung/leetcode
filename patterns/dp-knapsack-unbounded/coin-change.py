@@ -1,4 +1,5 @@
 '''
+revisit on 4/14 4'41"
 6 min after knowing the answer
 
 imagine each coin is gain seperately one by one, modify dp in a way the best performance is gained at that set of coin

@@ -1,4 +1,5 @@
 '''
+revisit on 4/14: 11' (get familiar with backtrack and dfs)
 43'
 
 good:

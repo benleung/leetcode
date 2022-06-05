@@ -1,4 +1,30 @@
 '''
+10' revisit on 4/14
+backtrack
+'''
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        sol = []
+        counter = Counter(nums)
+        keys = list(counter.keys())
+        candidate = []
+        def backtrack(i):
+            if i == len(keys):
+                sol.append(candidate.copy())
+                return
+            key = keys[i]
+            for count in range(counter[key]+1):
+                for _ in range(count):
+                    candidate.append(key)
+                backtrack(i+1)
+                for _ in range(count):
+                    candidate.pop()
+                
+        backtrack(0)
+        
+        return sol
+
+'''
 spend 20'
 should revisit
 '''

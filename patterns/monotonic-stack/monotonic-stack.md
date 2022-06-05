@@ -29,3 +29,7 @@ for i in range(N-2,-1,-1):
 print(maxQ)
 
 ```
+
+
+# regional minimum/max problem
+![picture 1](images/fd23a7d229f8d8bd28ec52b318e533cd86483b9113901bd3f4168aa6e0c67e05.png)  

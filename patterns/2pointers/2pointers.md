@@ -37,15 +37,8 @@ left += 1
 right += 1
 ```
 
-### complexity
-
-O(2n) = O(n)
-
+# complexity
+O(n)
 sorting algorithm is usually O(nlogn)
 
-
-
-
-- 
-
-# One for read, one for write
+# Pattern 1: One for read, one for write

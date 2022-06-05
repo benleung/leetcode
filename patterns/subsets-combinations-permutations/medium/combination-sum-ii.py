@@ -1,4 +1,5 @@
 '''
+revisit on 4/14: 16' (still remember the use of counter, but used in a better way now)
 55' 
 
 practice again

@@ -1,4 +1,5 @@
 '''
+10' revisit on 4/12
 10' after knowing sol
 '''
 class Solution:

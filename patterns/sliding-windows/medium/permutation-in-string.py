@@ -1,4 +1,26 @@
 '''
+6'30"
+'''
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        s1counter = Counter(s1)
+        N1 = len(s1)
+        N2 = len(s2)
+        s2counter = Counter(s2[:N1])
+        
+        if s1counter == s2counter:
+            return True
+        
+        for i in range(N1, N2):
+            s2counter[s2[i]] += 1
+            s2counter[s2[i-N1]] -= 1
+            if s1counter == s2counter:
+                return True
+        
+        return False
+        
+
+'''
 good
 thought of sliding windows in early stage
 not careful enough in the logic in remove

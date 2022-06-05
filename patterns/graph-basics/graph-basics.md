@@ -25,5 +25,5 @@ example: network-delay-time
 
 
 
-# Minimum Spanning Tree
+# Minimum Spanning Tree / MST
 look at tree-basics

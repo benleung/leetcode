@@ -1,4 +1,5 @@
 '''
+solution: https://leetcode.com/problems/longest-repeating-character-replacement/discuss/278271/JavaC%2B%2BPython-Sliding-Window-just-O(n)
 10' if knowing answer in advance
 '''
 from collections import defaultdict
@@ -17,7 +18,7 @@ class Solution(object):
             ch_count_in_window[s[r]] += 1
             
             window_size = r-l+1
-            candidate_size = max(ch_count_in_window.values()) # decide a candidate (ch with max freq)
+            candidate_size = max(ch_count_in_window.values()) # this is the key: decide a candidate (ch with max freq)
             non_candidate_size = window_size - candidate_size
             
             # k constrainst doesn't allow, should shrink

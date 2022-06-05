@@ -49,7 +49,7 @@ print("{0:b}".format(-1))  # FFFF FFFF
 ```python
 a = 0xFFFFFFFF
 
-~(a ^ mask)
+~(a ^ mask)  # -1
 ```
 
 ## detect negative

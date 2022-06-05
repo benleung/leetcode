@@ -1,4 +1,5 @@
 '''
+revisit on 4/13: 
 16' (a reasonable time if first time to face this problem)
 
 good
@@ -8,6 +9,37 @@ good
 bad
 - not fast enough for 2 pointers iterating
 '''
+
+class Solution:
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+        ans = []
+        firstptr = 0
+        secondptr = 0
+        
+        def intersection(first, second):
+            start = max(first[0], second[0])
+            end = min(first[1], second[1])
+            return [start,end]
+        
+        while firstptr < len(firstList) and secondptr < len(secondList):
+            first = firstList[firstptr]
+            second = secondList[secondptr]
+            
+            if first[1] < second[0]:
+                firstptr += 1
+            elif second[1] < first[0]:
+                secondptr += 1
+            else:
+                ans.append(intersection(first,second))
+                if first[1] < second[1]:
+                    firstptr += 1
+                elif second[1] < first[1]:
+                    secondptr += 1
+                else:
+                    firstptr += 1
+                    secondptr += 1
+        
+        return ans
 
 class Solution:
     def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:

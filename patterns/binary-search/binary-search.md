@@ -4,10 +4,10 @@
   - as long as you can rule out some part
 - the target point need to match with certain conditions (e.g. compare with point nearby)
 
-# Minimax algorithm
+# Minmax algorithm
 example: koko-eating-bananas
 - find the min/max candidates, and run binary search
-```
+```python
 min_k = math.ceil(sum(piles)/h)
 max_k = math.ceil(max(piles)/(h//len(piles)))
 ```

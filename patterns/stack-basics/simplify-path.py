@@ -1,3 +1,18 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        path_stack = []
+        
+        for filename in path.split('/'):
+            if filename in ["", "."]:
+                continue
+            elif filename == "..":
+                if path_stack != []:
+                    path_stack.pop()
+            else:
+                path_stack.append(filename)
+        
+        return "/"+"/".join(path_stack)
+
 '''
 should use split instead of running ch by ch
 '''

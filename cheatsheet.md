@@ -9,10 +9,36 @@ def mycmp(a, b):
         return -1
     else:
         return 0
-  
-  
-print(sorted([1, 2, 4, 2], key=functools.cmp_to_key(mycmp)))
+print("-1".isnumeric())
 
+print(sorted([1, 2, 4, 2], key=cmp_to_key(mycmp)))
+
+# 2-d matrix
+- Rotate: technque of Rotate Groups of Four Cells (rotate-image)
+- Positive diagonal: ↗️ r+c
+  - 0...N
+  - center: (N//2)*2
+- Negative diagonal: ↘️ r-c
+  - -(N-1)...(N-1)
+  - center: 0
+
+# 2-pointer
+  - left < right
+  - one for read, one for write
+
+# bfs-matrix
+remember to avoid revisiting
+# bfs-tree
+- multiple loop
+- column number
+  - start with 0
+  - q.append((n.left, 2*col))
+  - q.append((n.right, 2*col + 1))
+
+# binary search
+- Minmax algorithm
+  - min_k = math.ceil(sum(piles)/h)
+  - max_k = math.ceil(max(piles)/(h//len(piles)))
 # bit manipulations
 carry = (a&b) << 1
 sum_without_carry = a ^ b
@@ -23,24 +49,6 @@ x = x & mask
 ~(a ^ mask)
 `x & (-x)` is a way to keep the rightmost 1-bit and to set all the other bits to 0
 
-
-# 2-d matrix
-- Rotate: technque of Rotate Groups of Four Cells (rotate-image)
-- Positive diagonal: ↗️ r+c
-  - 0...N
-  - center: (N//2)*2
-- Negative diagonal: ↘️ r-c
-  - -(N-1)...(N-1)
-  - center: 0
-# 2-pointer
-  - left < right
-  - one for read, one for write
-# bfs-matrix
-- column number
-  - start with 0
-  - q.append((n.left, 2*col))
-  - q.append((n.right, 2*col + 1))
-
 # dfs-backtrack
 - reusing index/depth to filter out some choices are common
 
@@ -48,34 +56,29 @@ x = x & mask
 - prefix sum
   - `h[curPrefix] = True`
   - `h[target-curPrefix]`
-# n-sum
-- `(a + b)%60 == 0 -> a%60 == (60-b)%60`
 
-# sliding-window
-- longest-xxxx-substring always think about whether sliding window can be applied
-- shortest-xxx-substring is similar
+# dfs graph
+- create graph (all directly/indirectly connect)
+- traversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
+- color -> detect cycle
+- dfs ends with nodes that dun all the prerequisite is resolved
 
-# subarray
-- prefix sum with modulus
-```python
-(cur - pre) %k = target
-implies
-(cur - target) %k = pre %k
-```
+# dfs-island
 
-# subsets-combinations-permutations
-- subsets
-  - cascading (allow duplication)
-  - cascading (avoid duplicates)
-  - backtrack with counters for all combinations, to avoid duplicates -> backtrack
-- combinations
-- combinations (backtrack with counter, technique to skip unnecessary branches)
-- permutations
-  - swapping (allow duplication)
-  - backtrack (avoid duplicates)
-- same value of different index, avoid duplication -> counter
+# dfs-tree
 
 # dynamic programming
+- dp-basic
+  - dp[i] to represent combinations that last end index is i (should revisit again) arithmetic-slices
+  - dp-jump
+
+- dp-fibonacci-number
+  - `O(2^n)`
+
+- dp-house-robber
+  - using last end index i
+  - decision of include this or not include this
+
 - dp-knapsack-01
   - method of all combinations
   - Tabulation 2-D array (meaning of i,j,d[i][j]) _should revise, easy forget after 2 days (forget again on march 8)..._
@@ -97,23 +100,6 @@ implies
   - `dp[j]`
     - match with question (number of coins)
 
-- dp basic
-  - dp[i] to represent combinations that last end index is i (should revisit again) arithmetic-slices
-  - dp-jump
-
-- dp-lis
-  - lis
-    - O(N^2) solution, using last end index i
-    - `dp[i] = max(dp[i], dp[i+j] + 1)`
-    - the optimal solution is however, without using dp, but intelligently build an array with binary search
-  - num of lis
-    - DP array can store more than one thing by tuple
-
-- dp-house-robber
-  - using last end index i
-  - decision of include this or not include this
-
-
 - dp-lcs
   - longest-common-subsequence
     - one index for start, one index for end
@@ -124,54 +110,139 @@ implies
         dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     ```
 
+- dp-lis
+  - lis
+    - O(N^2) solution, using last end index i
+    - `dp[i] = max(dp[i], dp[i+j] + 1)`
+    - the optimal solution is however, without using dp, but intelligently build an array with binary search
+  - num of lis
+    - DP array can store more than one thing by tuple
+
 - dp-matrix
   - trick about maximal-square
 
 - dp-longest-palindromic-substring
   - expanding width between left/right indexes
   - width of 0/1 are special cases
+# graph-basic
+- Dijkstra's algorithm (heap on distance)
 
-# bit manipulations
+# n-sum
+- `(a + b)%60 == 0 -> a%60 == (60-b)%60`
 
+# quickselect
+```python
+def quickSelect(self, nums, l, r, k):
+    # pivot = nums[r]
+    # if l == k-1:
+    #     return nums[l]
+    
+    # grouping
+    fast, slow = l, l
+    while fast < r: #last element is pivot, so skip
+        if nums[fast] > nums[r]: #hesitate here (decide end of or start of, not effect on ...)
+            nums[slow], nums[fast] = nums[fast], nums[slow]
+            fast += 1
+            slow += 1
+        else:
+            fast += 1
+    nums[slow], nums[r] = nums[r], nums[slow]
+    
+    if slow == k-1:
+        return nums[slow]
+    elif slow < k-1:
+        return self.quickSelect(nums, slow + 1, r, k)
+    else:
+        return self.quickSelect(nums, l, slow-1, k)
+```
 
-- math
-  - digital root (too rare)
-- dfs-basics
-  - iteration: use stack
-- tree-basics
-  - O(n) for finding height
-  - O(n) for finding binary search tree, unless the tree is balanced
-  - array implementation of Tree (without dummy head)
-    - children at indices 2i + 1 and 2i + 2 
-    - its parent floor((i − 1) ∕ 2)
-  - array implementation of Tree (with dummy head)
-    - children at indices `2i` and `2i + 1`
-    - its parent `i∕/2`
-  - binary search tree
-    - insert by recursion
-  - traversals
-    - inorder
-      - inorder of BST -> sorted list
-    - preorder
-    - postorder
-  - lowest-common-ancestor
-    - check cur.val against p.val and q.val along the traversals, until their destination split off
-  - convert list to balanced tree (sort -> preorder transversal)
-  - write recursion wisely
-    - symmetric-tree (practice)
-    - dun call recursion too fast because sometimes cannot distinguish left/right
-      - e.g. sum-of-left-leaves
-  - lowest-common-ancestor-of-a-binary-tree is a classic problem 
-    - solve by dfs-backtracking on tree (but more like recursive)
-  - binary tree and binary search tree are different
-  - check whether valid tree graph-valid-tree (parent hash)
+# sliding-window
+- longest-xxxx-substring always think about whether sliding window can be applied
+- shortest-xxx-substring is similar
+```python
+def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+  ans = 0
+  
+  window_size = 0
+  cur_prod = 1
+  
+  for i in range(len(nums)):
+      cur_prod *= nums[i]
+      window_size += 1
+      
+      while window_size > 0 and cur_prod >= k:  # point 3
+          cur_prod /= nums[i-window_size+1]
+          window_size -= 1
+      
+      ans += window_size
+  
+  return ans
+```
 
-- bfs-tree
-  - symmetric-tree can be solved by bfs
-    - order the queue in a proper way (populating-next-right-pointers-in-each-node)
-  - technique of using queue to transverse (mutliple loop, attach value, order, check None)
+# subarray
+- prefix sum with modulus
+```python
+(cur - pre) %k = target
+implies
+(cur - target) %k = pre %k
+```
 
+# subsets-combinations-permutations
+- subsets
+  - cascading (allow duplication)
+  - cascading (avoid duplicates)
+  - backtrack with counters for all combinations, to avoid duplicates -> backtrack
+- combinations
+- combinations (backtrack with counter, technique to skip unnecessary branches)
+- permutations
+  - swapping (allow duplication)
+  - backtrack (avoid duplicates)
+- same value of different index, avoid duplication -> counter
 
+# tree-basics
+- O(n) for finding height
+- O(n) for finding binary search tree, unless the tree is balanced
+- array implementation of Tree (without dummy head)
+  - children at indices 2i + 1 and 2i + 2 
+  - its parent floor((i − 1) ∕ 2)
+- array implementation of Tree (with dummy head)
+  - children at indices `2i` and `2i + 1`
+  - its parent `i∕/2`
+- binary search tree
+  - insert by recursion
+- traversals
+  - inorder
+    - inorder of BST -> sorted list
+  - preorder
+  - postorder
+- lowest-common-ancestor
+  - check cur.val against p.val and q.val along the traversals, until their destination split off
+- convert list to balanced tree (sort -> preorder transversal)
+- write recursion wisely
+  - symmetric-tree (practice)
+  - dun call recursion too fast because sometimes cannot distinguish left/right
+    - e.g. sum-of-left-leaves
+- lowest-common-ancestor-of-a-binary-tree is a classic problem 
+  - solve by dfs-backtracking on tree (but more like recursive)
+- binary tree and binary search tree are different
+- check whether valid tree graph-valid-tree (parent hash)
+# math
+### digital root
+Question: 38 --> 3 + 8 --> 11
+Answer
+```
+def addDigits(self, num: int) -> int:
+  if num == 0:
+      return 0
+  if num % 9 == 0:
+      return 9
+  return num % 9
+```
+
+### 3+4+5+6...
+a+...+b = (a+b)*N//2 where N is number of items in a,..., b
+
+# Others
 - fibonacci
   - without dp, time complexity is O(2^n). 
   - optimize dp space, by rolling prev/cur
@@ -220,9 +291,6 @@ implies
 
 - dfs island
 
-- dfs graph
-  - create graph (all directly/indirectly connect)
-  - traversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
 
 - dfs tree
   - recursive

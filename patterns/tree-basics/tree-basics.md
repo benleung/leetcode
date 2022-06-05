@@ -125,7 +125,8 @@ def printPreorder(root):
 
 ## from child to parent
 - recursion: through return value
-
+- iteration: through (..., state) as node
+  - flatten-binary-tree-to-linked-list
 # Minimum Spanning Tree (Using Kruskal's algorithm)
 connecting-cities-with-minimum-cost
 - key point to remember
@@ -133,8 +134,12 @@ connecting-cities-with-minimum-cost
   - use visited hashmap
   - use min hash map
   - algorithm: chose the min edge (always to )
+- minimum cost to connect all nodes
 
 # path
 binary-tree-maximum-path-sum
 - technique of side effect (walk through paths of parent xxx)
 - technique of return value (sum that has root as the end)
+
+# BST common assumption
+all number unique?

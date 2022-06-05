@@ -1,23 +1,42 @@
-### Personal Comments
-
-
-### Feature to judge
+# Feature to judge
 - contiguous subarrays
 - substring
-- find size of longest subarray that ...
+- find size of shortest/longest subarray that ...
 - O(N) to solve
 
-### Patterns
-longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit
-  adjust left's pointer when meet bottleneck at right
-design-hit-counter
-  not jumping one by one
-longest-repeating-character-replacement
-  probably the most difficult seen so far
-minimum-window-substring
-  when move window, adjust counter to indicate a member exists or not
-  technique to skip unrelated character
+# Pattern 1: adjust window size to enable window content to fit window requirement
+e.g.
+```python
+def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+  ans = 0
+  
+  window_size = 0
+  cur_prod = 1
+  
+  for i in range(len(nums)):
+      cur_prod *= nums[i]
+      window_size += 1
+      
+      while window_size > 0 and cur_prod >= k:  # point 3
+          cur_prod /= nums[i-window_size+1]
+          window_size -= 1
+      
+      ans += window_size
+  
+  return ans
+```
 
-### List of Questions
-https://leetcode.com/tag/sliding-window/
-https://leetcode.com/problemset/all/?listId=9rlr9l1&page=1&topicSlugs=sliding-window
+
+## point 1: substring that ends with xxx
+number of combinations = window size
+
+## point 2: left
+`left = i-window_size+1`
+
+## point 3: while loop
+
+
+# Pattern 2: fixed window size
+initialize window size
+`for i in range(win_size,...)`
+`left = i-window_size+1`

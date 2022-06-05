@@ -1,3 +1,6 @@
+# basics
+subarray means consecutive
+
 # technique 1
 - `sumOf(i,j) = sumOf(0,j) - sumOf(0,i-1)`
 - however `sumOf(0,j) = ?` needs special handling
