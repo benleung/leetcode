@@ -1,3 +1,7 @@
+'''
+a smarter way to do without extra space: 
+    skill: start from end (unfilled elements)
+'''
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """
