@@ -1,5 +1,3 @@
-
-
 # Sum With Carry
 ```
 sum_without_carry = a ^ b
@@ -65,4 +63,6 @@ x > 0x7FFFFFFF  # this is negative
 - `x & (-x)` is a way to keep the rightmost 1-bit and to set all the other bits to 0
 
 # reverse bit
-- (too special)
+all_one = 2**binary_length-1
+reversed bit =  all_one^n
+a.bit_length()   # e.g. 0b101 -> 3

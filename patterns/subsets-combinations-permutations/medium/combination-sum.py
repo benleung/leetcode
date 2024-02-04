@@ -1,4 +1,42 @@
 '''
+revisit on 7/12
+sucess in first run
+but need more practice to write faster
+'''
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        sol  = [
+        ]
+        
+        candidate = []
+
+        N = len(candidates)
+        candidates.sort()
+        def backtrack(i, remain):
+            
+            if i == N:
+                return
+            
+            if remain == 0:
+                sol.append(candidate.copy())
+                return
+            
+            # for j in range(i, N):
+            if remain-candidates[i] >= 0:
+                candidate.append(candidates[i])
+                backtrack(i, remain-candidates[i])
+                candidate.pop()
+            else:
+                # bigger number won't fit, if small number already doesn't fit
+                return
+            
+            backtrack(i+1, remain)
+            
+        backtrack(0, target)
+        return sol
+
+
+'''
 15'
 good
 - if remain < 0, i.e. we exceed the target value, we will cease the exploration here.

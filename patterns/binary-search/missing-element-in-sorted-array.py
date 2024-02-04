@@ -1,5 +1,6 @@
 '''
 there is a binary search solution, wheter revise
+→ did the binary search solution in kth-missing-positive-number instead
 '''
 
 '''

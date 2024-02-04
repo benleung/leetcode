@@ -1,7 +1,7 @@
 '''
 very intuitive if imaginge a tree and want to try all the combinations
 
-7' -> 5' (revisited on march 23)
+7' -> 5' (revisited on march 23) -> 7'25" (revisted on dec 11)
 '''
 
 

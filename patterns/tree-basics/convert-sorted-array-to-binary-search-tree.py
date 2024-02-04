@@ -1,3 +1,18 @@
+'''
+less than 10 min
+'''
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def dfs(l, r): # return TreeNode
+            if l > r:
+                return None
+            center = (l+r)//2
+            left = dfs(l, center-1)
+            right = dfs(center+1, r)
+            return TreeNode(val=nums[center], left=left, right=right)
+            
+        
+        return dfs(0, len(nums)-1)
 
 #19'30"
 

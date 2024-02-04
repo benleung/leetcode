@@ -1,4 +1,9 @@
 '''
+
+??' 
+able to write reverse list correctly
+
+
 17' (actually medium difficulty)
 
 - reverse link list

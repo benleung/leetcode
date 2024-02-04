@@ -1,4 +1,5 @@
 '''
+revist on 12/11: 4'50": 
 by thinking about case of 3 element and case of 4 element
 
 

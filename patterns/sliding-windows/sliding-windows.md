@@ -32,6 +32,8 @@ number of combinations = window size
 
 ## point 2: left
 `left = i-window_size+1`
+or 
+`window_size = i-left+1`
 
 ## point 3: while loop
 

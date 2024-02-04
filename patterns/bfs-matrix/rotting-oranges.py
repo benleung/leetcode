@@ -1,5 +1,5 @@
 '''
-17'
+17' -> 11'
 
 so typical, luckily i did 01-matrix before, such that know should define multiple q
 '''

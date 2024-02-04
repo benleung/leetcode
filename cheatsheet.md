@@ -1,17 +1,26 @@
 # syntax for python
-- max(square, key = lambda k: square[k])
 - cmp_to_key
-def mycmp(a, b):
-    print("comparing ", a, " and ", b)
+import functools
+def mycmp(a, b): # in order
     if a > b:
         return 1
     elif a < b:
         return -1
     else:
         return 0
-print("-1".isnumeric())
+print(sorted([1, 2, 4, 2], key=functools.cmp_to_key(mycmp)))
+bisect.bisect_left(array,x)
+pow()
+float('inf')
+ord()  chr()
+"%d %02d %.2f" % (1, 1, 1)  # 1, 01, 1.0
+lower() islower() isalpha() isnumeric()
+h = {}   ... in h # check key
+lambda x:x
+for key, val in dict.items()
+for i, val in enumerate(array)
+s = set()  s1 & s2  s1 | s2
 
-print(sorted([1, 2, 4, 2], key=cmp_to_key(mycmp)))
 
 # 2-d matrix
 - Rotate: technque of Rotate Groups of Four Cells (rotate-image)
@@ -21,6 +30,11 @@ print(sorted([1, 2, 4, 2], key=cmp_to_key(mycmp)))
 - Negative diagonal: ↘️ r-c
   - -(N-1)...(N-1)
   - center: 0
+
+# binary search
+- Minmax algorithm
+  - min_k = math.ceil(sum(piles)/h)
+  - max_k = math.ceil(max(piles)/(h//len(piles)))
 
 # 2-pointer
   - left < right
@@ -35,10 +49,7 @@ remember to avoid revisiting
   - q.append((n.left, 2*col))
   - q.append((n.right, 2*col + 1))
 
-# binary search
-- Minmax algorithm
-  - min_k = math.ceil(sum(piles)/h)
-  - max_k = math.ceil(max(piles)/(h//len(piles)))
+
 # bit manipulations
 carry = (a&b) << 1
 sum_without_carry = a ^ b
@@ -59,6 +70,9 @@ x = x & mask
 
 # dfs graph
 - create graph (all directly/indirectly connect)
+```python
+graph = defaultdict(list) 
+```
 - traversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
 - color -> detect cycle
 - dfs ends with nodes that dun all the prerequisite is resolved
@@ -395,3 +409,7 @@ modify the original array
 ## array to number
 - remove-k-digits
 - next-permutation
+
+
+# math formula
+(首項+尾項)*項數/2

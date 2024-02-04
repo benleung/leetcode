@@ -1,5 +1,6 @@
 '''
 second trial (10')
+revisit on 12/12: 13'20"
 for dp, possible to bottom up by increasing length
 '''
 class Solution:

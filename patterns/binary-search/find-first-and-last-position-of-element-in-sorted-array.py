@@ -1,4 +1,21 @@
 '''
+5' using bisect
+a good revision of using bisect
+'''
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        N = len(nums)
+        
+        left = bisect_left(nums, target)
+        if left == N or nums[left] != target:
+            left = -1
+
+        right = bisect_right(nums, target) -1
+        if right == -1 or nums[right] != target:
+            right = -1
+        return [left, right]
+
+'''
 16'30"
 
 good 
