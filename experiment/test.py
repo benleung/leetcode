@@ -1,4 +1,5 @@
 import functools
+from math import ceil
 
-a = (1,2,3,4)
+a = ceil(10**17//2)
 print(a)

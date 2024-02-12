@@ -32,9 +32,10 @@ s = set()  s1 & s2  s1 | s2
   - center: 0
 
 # binary search
-- Minmax algorithm
+- Minmax algorithm (koko-eating-bananas)
   - min_k = math.ceil(sum(piles)/h)
-  - max_k = math.ceil(max(piles)/(h//len(piles)))
+  - max_k = math.ceil(max(piles)/(h//len(piles)))  # failed again, better memorize
+
 
 # 2-pointer
   - left < right
@@ -395,6 +396,7 @@ while pile>0:
 - dict
   - del h['a']
 - `.copy()` deep copy doesn't work for array inside array
+- `ceil()` is not ok for large value
 
 # Datastructure Knowledge
 - monotonic deque
@@ -413,3 +415,4 @@ modify the original array
 
 # math formula
 (首項+尾項)*項數/2
+Pascal Triangle https://openhome.cc/zh-tw/algorithm/basics/pascal-triangle/

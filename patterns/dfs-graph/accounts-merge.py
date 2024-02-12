@@ -1,4 +1,45 @@
 '''
+2024/2/13 revisit 17'
+one time clear without bug
+'''
+from collections import defaultdict
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:        
+        email_to_name = {}
+        graph = defaultdict(list)
+        visited = set()
+        ans = []
+
+        for account in accounts:
+            name = account[0]
+            first_email = account[1]
+            email_to_name[first_email] = name
+            
+            for i in range(2, len(account)):
+                graph[first_email].append(account[i])
+                graph[account[i]].append(first_email)
+        
+        for email in email_to_name:
+            email_list = []
+            if email not in visited:
+                # transverse in the graph and add to email_list
+                nodes = [email]
+                visited.add(email)
+                email_list.append(email)
+
+                while nodes != []:
+                    node = nodes.pop()
+                    for candidate in graph[node]:
+                        if candidate not in visited:
+                            nodes.append(candidate)
+                            visited.add(candidate)
+                            email_list.append(candidate)
+
+                ans.append([email_to_name[email]] + sorted(email_list))
+
+        return ans
+
+'''
 revisited: 3/23 (19')
 revisted: 2/25
 a very good example of dfs graph, should revisit again

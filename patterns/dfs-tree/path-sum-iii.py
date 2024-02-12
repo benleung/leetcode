@@ -11,7 +11,7 @@ class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         h = defaultdict(int) # prefix sum -> # of this sum
         self.ans = 0
-        h[0] = 1
+        h[0] = 1  # revised on 2024/2/11, didn't miss this
         
         if not root:
             return 0
@@ -20,7 +20,7 @@ class Solution:
             accSum += node.val
             self.ans += h[accSum - targetSum]
 
-            h[accSum] += 1
+            h[accSum] += 1  # revised on 2024/2/11, good to recall that i should write in this way
             if node.left != None:
                 backtrack(node.left, accSum)
             if node.right != None:
