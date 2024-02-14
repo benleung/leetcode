@@ -4,7 +4,7 @@ revisited on 3/24
 '''
 
 '''
-revvisited on 3/8 (worth more revisit)
+revisited on 3/8 (worth more revisit)
 '''
 from collections import defaultdict
 class Solution:

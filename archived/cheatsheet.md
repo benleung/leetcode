@@ -63,6 +63,7 @@ x = x & mask
 
 # dfs-backtrack
 - reusing index/depth to filter out some choices are common
+  - using memorization
 
 # dfs-tree
 - prefix sum
@@ -77,10 +78,6 @@ graph = defaultdict(list)
 - traversal with dfs (avoid revisit, action for cluster, stack, explore next, try all node)
 - color -> detect cycle
 - dfs ends with nodes that dun all the prerequisite is resolved
-
-# dfs-island
-
-# dfs-tree
 
 # dynamic programming
 - dp-basic
@@ -241,6 +238,7 @@ implies
   - solve by dfs-backtracking on tree (but more like recursive)
 - binary tree and binary search tree are different
 - check whether valid tree graph-valid-tree (parent hash)
+
 # math
 ### digital root
 Question: 38 --> 3 + 8 --> 11
@@ -253,9 +251,6 @@ def addDigits(self, num: int) -> int:
       return 9
   return num % 9
 ```
-
-### 3+4+5+6...
-a+...+b = (a+b)*N//2 where N is number of items in a,..., b
 
 # Others
 - fibonacci
